@@ -110,6 +110,22 @@ module.exports = (app, passport) => {
             res.redirect('/forgot');
         })
     });
+
+    // To Reset Password
+    app.get('/reset/:token', (req, res) => {
+
+        User.findOne({passwordResetToken:req.params.token, passwordResetExpires: {$gt: 
+        Date.now()}},(err, user) => {
+            if(!user){
+                req.flash('error', 'Password reset token has expired or is invalid.');
+                return res.redirect('/reset/'+req.params.token);
+            }
+            var errors = req.flash('error');
+            res.render('user/reset', {title: 'Reset Your Password', messages: errors, hasErrors: errors.length > 0});
+        })
+
+        
+    });
 }
 
 function validate(req, res, next){
