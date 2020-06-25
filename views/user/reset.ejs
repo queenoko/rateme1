@@ -17,27 +17,31 @@
             </a>
         </div><br> -->
 
-        
-        
-
-                <div class="banner-title text-center reg_msg">
-                        <h2 class="fancy"><span>Reset Password</span></h2>
-                   </div><br><br><br>
 
                    <div class="row signup">
-            
-                            <% if(hasErrors) {%>
-                                <% for(var i = 0; i < messages.length; i++) {%>
-                                    <div class="alert alert-danger">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">
-                                            &times;
-                                        </a>
-                                        <%= messages[i] %>
-                
-                                    </div>
-                                <% } %>
-                            <% } %>
 
+                        <% if(hasErrors) {%>
+                            <% for(var i = 0; i < messages.length; i++) {%>
+                                <div class="alert alert-danger">
+                                   <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                                       &times;
+                                   </a>
+                                   <%= messages[i] %>
+                                    
+                                </div>
+                            <% } %>
+                        <% } %>
+
+                        <% if(noErrors) {%>
+                                <div class="alert alert-success">
+                                   <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                                       &times;
+                                   </a>
+                                   <%= success %>
+                                    
+                                </div>
+                        <% } %>
+            
             <form method="POST">
     
                 <div class="form-group input_group">
