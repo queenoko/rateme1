@@ -13,7 +13,12 @@ module.exports = (app, passport) => {
 
     // Index Routes
     app.get('/', (req, res, next) =>{       
-        res.render('index', {title: 'Index || RateMe'}); 
+         
+        if(req.session.cookie.originalMaxAge !== null) {
+            res.redirect('/home');
+        }else{
+            res.render('index', {title: 'Index || RateMe'});
+        }
     });
     // Signup Routes
     app.get('/signup', (req, res) => {
@@ -177,7 +182,7 @@ module.exports = (app, passport) => {
                             res.redirect('/reset/'+req.params.token);
                         }
 
-                        //res.render('user/reset', {title: 'Reset Your Password', messages: errors, hasErrors: errors.length > 0});
+                    
                     });
             },  
             
@@ -206,7 +211,16 @@ module.exports = (app, passport) => {
                      success:success, noErrors:success.length > 0});
                 });
             }
-        ])
+        ]);
+    });
+
+    // LOGOUT ROUTE
+    app.get('/logout', (req, res) => {
+        req.logout();
+
+        req.session.destroy((err) => {
+            res.redirect('/');
+        })
     })
 }
 
