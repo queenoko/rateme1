@@ -51,15 +51,26 @@ module.exports = (app, passport) => {
         res.redirect('/home');
     });
 
+    //Routes for Facebook
+    app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
+
+    app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+        successRedirect: '/home',
+        failureRedirect: '/login',
+        failureFlash: true
+    }))
+
     // Home Routes
     app.get('/home', (req, res) => {
-        res.render('home', {title: 'Home || RateMe'});
+        res.render('home', {title: 'Home || RateMe', user: req.user});
     });
 
     // FORGOT PAGE
     app.get('/forgot', (req, res) => {
         var errors = req.flash('error');
+
         var info = req.flash('info');
+
         res.render('user/forgot', {title: 'Request Password Reset', messages: errors, hasErrors: errors.length > 0,
         info: info, noErrors: info.length > 0});
     });
