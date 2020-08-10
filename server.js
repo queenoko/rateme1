@@ -44,6 +44,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/user')(app, passport);
+require('./routes/company')(app);
 
 // CREATING A ROUTE
 
