@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');
 var flash = require('connect-flash');
+var _ = require('underscore');
 
 
 var app = express();
@@ -43,8 +44,11 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.locals._ = _;
+
 require('./routes/user')(app, passport);
 require('./routes/company')(app);
+require('./routes/review')(app);
 
 // CREATING A ROUTE
 

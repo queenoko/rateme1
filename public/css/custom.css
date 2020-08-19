@@ -124,22 +124,22 @@ input[type="submit"]{
     padding: 0;
 }
 
-/* .companyListItemLogo{
+ .companyListItemLogo{
     display: inline;
     width: 100px;
     height: 120px;
     margin: 0;
     padding: 0;
     float: left;
-} */
+}  
 
-.companyListItemInfo{
+/* .companyListItemInfo{
     margin: 0;
-    padding: 10px 0px 0px 10px;
+    padding: 0px 0px 0px 0px;
     height: 120px;
     width: 250px;
     float: right;
-}
+} */
 
 .companyListItemInfo h5{
     font-size: 18px;
@@ -199,8 +199,8 @@ input[type="submit"]{
 
 .colDiv .col-md-4{
     border: 1px solid #e7e7e7;
-    margin: 0px 5px 20px 10px;
-    width: 270px;
+    margin: 0px 5px 20px 20px;
+    width: 230px;
     height: 150px;
     color: #73879C;
 }
@@ -209,7 +209,7 @@ input[type="submit"]{
     height: 55px;
     background-color: #f5f7fa;
     color: #73879C;
-    margin-bottom: 20px;
+    margin: 40px 10px 10px 10px;
     display: flex;
     align-items: center;
 }
