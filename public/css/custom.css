@@ -125,7 +125,6 @@ input[type="submit"]{
 }
 
  .companyListItemLogo{
-    display: inline;
     width: 100px;
     height: 120px;
     margin: 0;
@@ -133,13 +132,13 @@ input[type="submit"]{
     float: left;
 }  
 
-/* .companyListItemInfo{
+ .companyListItemInfo{
     margin: 0;
-    padding: 0px 0px 0px 0px;
+    padding:10px 0px 0px 10px;
     height: 120px;
-    width: 250px;
+    width: 200px;
     float: right;
-} */
+} 
 
 .companyListItemInfo h5{
     font-size: 18px;
