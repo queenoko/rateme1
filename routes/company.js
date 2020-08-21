@@ -71,7 +71,6 @@ module.exports = (app) => {
     //find method returns the array in that data(view all companies)
     app.get('/companies', (req, res) => {
         Company.find({}, (err, result) => {
-            console.log(result)
             res.render('company/companies', {title: 'All Companies || RateMe', user: req.user, data: result});
         });
         

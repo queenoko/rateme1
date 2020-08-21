@@ -6,6 +6,7 @@ var async = require('async');
 // Random token//
 var crypto = require('crypto');
 var User = require('../models/user');
+var Company = require('../models/company');
 var secret = require('../secret/secret');
 
 // Passport export//
@@ -17,7 +18,9 @@ module.exports = (app, passport) => {
         if(req.session.cookie.originalMaxAge !== null) {
             res.redirect('/home');
         }else{
-            res.render('index', {title: 'Index || RateMe'});
+            Company.find({}, (err, result) => {
+                res.render('index', {title: 'Index || RateMe', data:result});
+            });
         }
     });
     // Signup Routes
@@ -278,5 +281,14 @@ function loginValidation(req, res, next){
         res.redirect('/login');
     }else{
         return next();
+    }
+ }
+
+ // URL protection and authentication
+ function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        next()
+    }else{
+        res.redirect('/')
     }
  }

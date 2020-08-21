@@ -7,13 +7,13 @@ module.exports = (app) => {
     app.get('/message/:id', (req, res) => {
         async.parallel([
             function(callback){
-                User.findById({'_id':req.params.id}, (err, result1) => {
+                User.findById({'_id': req.params.id}, (err, result1) => {
                     callback(err, result1);
                 })
             },
             
             function(callback){
-                Message.find({'$or': [{'userFrom':req.user._id, 'userTo':req.params.id}, {'userFrom': req.params.id, 'userTo':req.user._id}]}, (err, result2) => {
+                Message.find({'$or': [{'userFrom': req.user._id, 'userTo':req.params.id}, {'userFrom': req.params.id, 'userTo': req.user._id}]}, (err, result2) => {
                     callback(err, result2);
                 });
             }
@@ -21,7 +21,8 @@ module.exports = (app) => {
             var data = results[0];
             var messages = results[1];
             
-            res.render('messages/message', {title: 'Private Message', user:req.user, data:data, chats:messages});
+            res.render('messages/message', {title: 'Private Message', user:req.user, data:
+            data, chats:messages});
         });
     });
     
