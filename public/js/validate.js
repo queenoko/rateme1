@@ -1,6 +1,6 @@
 // Jquery
 $(document).ready(function(){
-    $('#register').on('click', function(){
+    $('#register').on('click', function(){  //function to perform validation in the input field of the company profile
         var name = $.trim($('#name').val());
         var address = $.trim($('#address').val());
         var city = $.trim($('#city').val());
@@ -65,7 +65,7 @@ $(document).ready(function(){
                 img: img
             };
 
-            //Ajax method
+            //Ajax method to save data in the database
             $.ajax({
                 url: '/company/create',
                 type: 'POST',

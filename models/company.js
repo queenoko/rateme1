@@ -19,7 +19,7 @@ var companySchema = mongoose.Schema({
         userFullname: {type: String, default: ''},
         userRole: {type: String, default: ''},
         companyImage: {type: String, default: ''},
-        userRating: {type: String, default: '0'},
+        userRating: {type: Number, default: '0'},
         userReview: {type: String, default: ''}
     }],
 

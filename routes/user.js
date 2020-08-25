@@ -64,7 +64,7 @@ module.exports = (app, passport) => {
     }))
 
     // Home Routes
-    app.get('/home', (req, res) => {
+    app.get('/home', isLoggedIn, (req, res) => {
         res.render('home', {title: 'Home || RateMe', user: req.user});
     });
 

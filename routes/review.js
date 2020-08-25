@@ -2,7 +2,7 @@ var async = require('async');
 var Company = require('../models/company');
 
 module.exports = (app) => {
-    app.get('/review/:id', (req, res) => {
+    app.get('/review/:id', isLoggedIn, (req, res) => {
         var messg = req.flash('success');
         Company.findOne({'_id':req.params.id}, (err, data) => {
             res.render('company/review', {title: 'Company Review', user: req.user, 
@@ -42,3 +42,12 @@ module.exports = (app) => {
         ])
     });
 }
+
+// URL protection and authentication middleware
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        next()
+    }else{
+        res.redirect('/')
+    }
+ }
